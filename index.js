@@ -1,16 +1,29 @@
 let container = document.querySelector('#container');
-let dimension = 16;
 
-for (let i = 0; i < dimension; i++) {
-    for (let j = 0; j < dimension; j++) {
-        let div = document.createElement('div');
-        div.classList.add('square-div');
+document.querySelector('#change-resolution').onclick = changeResolution;
 
-        // if (j % 4 === 0) div.style.backgroundColor = 'lime';
-        div.addEventListener('mouseover', () => {
-            div.style.backgroundColor = 'black';
-        });
+function changeResolution() {
+    let resolution = Number(prompt("Please enter a resolution for your sketch pad. Maximum: 100", "16"));
+    resolution = (resolution <= 100) ? resolution : 100;
 
-        container.appendChild(div);
+    // Clear existing content in the container
+    container.innerHTML = '';
+
+    for (let i = 0; i < resolution; i++) {
+        let rowContainer = document.createElement('div');
+        rowContainer.classList.add('row-container');
+
+        for (let j = 0; j < resolution; j++) {
+            let div = document.createElement('div');
+            div.classList.add('square-div');
+    
+            if (j % resolution === 0) div.style.backgroundColor = 'lime';
+            // div.addEventListener('mouseover', () => {
+            //     div.style.backgroundColor = 'black';
+            // });
+
+            rowContainer.appendChild(div);
+        }
+        container.appendChild(rowContainer);
     }
 }

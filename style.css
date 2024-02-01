@@ -1,20 +1,35 @@
+/* #top-buttons {
+    margin: 0.5vw;
+    margin: 0 auto;
+} */
+
 #container {
     display: flex;
     flex-wrap: wrap;
-    width: 600px;
+    width: 90vh;
+    aspect-ratio: 1;
+    margin: 1vw;
+    /* margin: 0.5vw auto;  */
+    /* justify-content: space-around; */
+    /*  each square has 0.1px border, adjacent squares add up to 0.2px border
+        so on the container, there should be 0.1px border to give the appearance 
+        of 0.2px border total
+    */
+    border: solid black 0.1px; 
+}
+
+.row-container {
+    width: 100%; 
+    display: flex;
+    flex-direction: row;
 }
 
 .square-div {
-    border: solid black 1px;
+    border: solid black 0.1px;
     background-color: lightblue;
     padding: 0;
-    margin: 1px;
-
+    /* margin: 0.1px; */
     /*  width-to-height ratio = 1 = 1/1 */
-    aspect-ratio: 1; 
-    /*  1/16 = 6.25% is the initial size of each square
-        minus 4px 
-        due to double the margin (1px) and double the border's width (1px) 
-    */
-    flex: 1 0 calc(6.25% - 4px)
+    aspect-ratio: 1;
+    flex: 1 1 auto; 
 }

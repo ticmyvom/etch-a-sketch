@@ -6,7 +6,10 @@ for (let i = 0; i < dimension; i++) {
         let div = document.createElement('div');
         div.classList.add('square-div');
 
-        if (j % 4 === 0) div.style.backgroundColor = 'lime';
+        // if (j % 4 === 0) div.style.backgroundColor = 'lime';
+        div.addEventListener('mouseover', () => {
+            div.style.backgroundColor = 'black';
+        });
 
         container.appendChild(div);
     }

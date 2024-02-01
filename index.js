@@ -21,13 +21,30 @@ function changeResolution() {
             // To easily keep track if the square grid's been rendered properly
             // if (j % resolution === 0) div.style.backgroundColor = 'lime';
             
-            div.addEventListener('mouseover', () => {
-                div.style.backgroundColor = 'black';
-            });
-
             rowContainer.appendChild(div);
-        }
+        } // end for-j loop
         container.appendChild(rowContainer);
+    } // end for-i loop
+    attachHoverListeners();
+}
+
+let isPenOn = false;
+let penToggleBtn = document.querySelector('#pen-toggle');
+penToggleBtn.onclick = penToggle;
+
+function penToggle() {
+    isPenOn = !isPenOn;
+    penToggleBtn.textContent = (isPenOn) ? 'Pen: ON' : 'Pen: OFF';
+}
+
+function attachHoverListeners() {
+    let squareDivs = document.querySelectorAll('.square-div');
+    for (let sqDiv of squareDivs) {
+        sqDiv.addEventListener('mouseover', () => {
+            if (isPenOn) {
+                sqDiv.style.backgroundColor = 'black';
+            }
+        });
     }
 }
 

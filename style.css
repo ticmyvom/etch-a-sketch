@@ -3,10 +3,6 @@ body {
     flex-direction: column;
     align-items: center;
 }
-/* #top-buttons {
-    margin: 0.5vw;
-    margin: 0 auto;
-} */
 
 #container {
     display: flex;
@@ -14,7 +10,6 @@ body {
     width: 90vh;
     aspect-ratio: 1;
     margin: 8px; 
-    /* justify-content: space-around; */
     /*  each square has 0.1px border, adjacent squares add up to 0.2px border
         so on the container, there should be 0.1px border to give the appearance 
         of 0.2px border total
@@ -30,10 +25,7 @@ body {
 
 .square-div {
     border: solid black 0.1px;
-    
     padding: 0;
-    /* margin: 0.1px; */
-    /*  width-to-height ratio = 1 = 1/1 */
-    aspect-ratio: 1;
+    aspect-ratio: 1; /*  width-to-height ratio = 1/1 */
     flex: auto; 
 }

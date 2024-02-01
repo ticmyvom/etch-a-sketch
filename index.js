@@ -1,10 +1,12 @@
 let container = document.querySelector('#container');
 
-document.querySelector('#change-resolution').onclick = changeResolution;
+let changeResolutionBtn = document.querySelector('#change-resolution');
+changeResolutionBtn.onclick = changeResolution;
 
 function changeResolution() {
-    let resolution = Number(prompt("Please enter the number of squares per side for your sketch pad. Maximum: 100", "16"));
+    let resolution = Number(prompt("Please enter the number of squares per side. Maximum: 100", "16"));
     resolution = (resolution <= 100) ? resolution : 100;
+    changeResolutionBtn.textContent = `Change the sketch pad's resolution: ${resolution} x ${resolution}`;
 
     // Clear existing content in the container
     container.innerHTML = '';

@@ -39,16 +39,36 @@ function penToggle() {
     penToggleBtn.textContent = (isPenOn) ? 'Pen: ON' : 'Pen: OFF';
 }
 
+let isRandomColor = false;
+let randomColorToggleBtn = document.querySelector('#random-color-toggle');
+randomColorToggleBtn.onclick = randomColorToggle;
+
+function randomColorToggle() {
+    isRandomColor = !isRandomColor;
+    randomColorToggleBtn.textContent = (isRandomColor) ? 'Random Color: ON' : 'Random Color: OFF';
+}
+
 function attachHoverListeners() {
     let squareDivs = document.querySelectorAll('.square-div');
     for (let sqDiv of squareDivs) {
         sqDiv.addEventListener('mouseover', () => {
             if (isPenOn) {
-                sqDiv.style.backgroundColor = 'black';
-            }
+                if (isRandomColor) {
+                    sqDiv.style.backgroundColor = randomRgbColor();
+                } else {
+                    sqDiv.style.backgroundColor = 'black';
+                }
+            } 
         });
     }
 }
+
+const randomRgbColor = () => {
+    let r = Math.floor(Math.random() * 256); // Random between 0-255
+    let g = Math.floor(Math.random() * 256); // Random between 0-255
+    let b = Math.floor(Math.random() * 256); // Random between 0-255
+    return 'rgb(' + r + ',' + g + ',' + b + ')';
+};
 
 document.querySelector('#reset').onclick = resetSketchPad;
 

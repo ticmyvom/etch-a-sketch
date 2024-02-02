@@ -65,7 +65,6 @@ function attachHoverListeners() {
         sqDiv.addEventListener('mouseover', () => {
             if (isPenOn) {
                 let currentBGColor = window.getComputedStyle(sqDiv, null).getPropertyValue('background-color');
-                console.log(tinycolor(currentBGColor).toString());
                 if (tinycolor(currentBGColor).toString() === 'rgb(255, 255, 255)') {
                     // if white, proceed normally
                     if (isRandomColor) {

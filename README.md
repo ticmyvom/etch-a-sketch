@@ -9,3 +9,6 @@ In this project, I created a pretty neat toy to practice DOM manipulation skills
 - Adding listeners to buttons
 
 It's a tough assignment but that's okay because I am tough.
+
+# Notes
+- The current version only works on laptops where the screens are big and the user draws by moving the mouse cursor.

@@ -1,3 +1,5 @@
+import tinycolor from "https://esm.sh/tinycolor2";
+
 let container = document.querySelector('#container');
 
 let changeResolutionBtn = document.querySelector('#change-resolution');
@@ -18,7 +20,7 @@ function changeResolution() {
         for (let j = 0; j < resolution; j++) {
             let div = document.createElement('div');
             div.classList.add('square-div');
-            setBackgroundColor(div, 'lightblue');
+            setBackgroundColor(div, 'white');
             
             // To easily keep track if the square grid's been rendered properly
             // if (j % resolution === 0) div.style.backgroundColor = 'lime';
@@ -48,15 +50,33 @@ function randomColorToggle() {
     randomColorToggleBtn.textContent = (isRandomColor) ? 'Random Color: ON' : 'Random Color: OFF';
 }
 
+let isDarken = false;
+let colorDarkenBtn = document.querySelector('#darken-toggle');
+colorDarkenBtn.onclick = darkenToggle;
+
+function darkenToggle() {
+    isDarken = !isDarken;
+    colorDarkenBtn.textContent = (isDarken) ? 'Darken Color: ON' : 'Darken Color: OFF';
+}
+
 function attachHoverListeners() {
     let squareDivs = document.querySelectorAll('.square-div');
     for (let sqDiv of squareDivs) {
         sqDiv.addEventListener('mouseover', () => {
             if (isPenOn) {
-                if (isRandomColor) {
-                    sqDiv.style.backgroundColor = randomRgbColor();
+                let currentBGColor = window.getComputedStyle(sqDiv, null).getPropertyValue('background-color');
+                console.log(tinycolor(currentBGColor).toString());
+                if (tinycolor(currentBGColor).toString() === 'rgb(255, 255, 255)') {
+                    // if white, proceed normally
+                    if (isRandomColor) {
+                        sqDiv.style.backgroundColor = randomRgbColor();
+                    } else {
+                        sqDiv.style.backgroundColor = 'black';
+                    }
                 } else {
-                    sqDiv.style.backgroundColor = 'black';
+                    // if there's already a color, darken it
+                    let darkenedColor = tinycolor(currentBGColor).darken(10).toString();
+                    sqDiv.style.backgroundColor = darkenedColor;
                 }
             } 
         });
@@ -75,7 +95,7 @@ document.querySelector('#reset').onclick = resetSketchPad;
 function resetSketchPad() {
     let squareDivs = document.querySelectorAll('.square-div');
     for (let sqDiv of squareDivs) {
-        setBackgroundColor(sqDiv, 'lightblue');
+        setBackgroundColor(sqDiv, 'white');
     }
 }
 

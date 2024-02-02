@@ -10,13 +10,17 @@
   <body>
     <div id="top-buttons">
       <button id="change-resolution">Change the sketch pad's resolution: res x res</button>
-      <button id="random-color-toggle">Random Color: OFF</button>
       <button id="pen-toggle">Pen: OFF</button>
+      <button id="random-color-toggle">Random Color: OFF</button>
+      <button id="darken-toggle">Darken Color: OFF</button>
       <button id="reset">Reset</button>
     </div>
 
     <div id="container"></div>
 	  
-    <script src="index.js"></script>
+    <script type='module'>
+      import tinycolor from "https://esm.sh/tinycolor2";
+    </script>
+    <script src="index.js" type='module'></script>
   </body>
 </html>

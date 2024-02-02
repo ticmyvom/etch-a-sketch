@@ -72,8 +72,8 @@ function attachHoverListeners() {
                     } else {
                         sqDiv.style.backgroundColor = 'black';
                     }
-                } else {
-                    // if there's already a color, darken it
+                } else if (isDarken) {
+                    // if there's already a color, darken it if isDarken
                     let darkenedColor = tinycolor(currentBGColor).darken(10).toString();
                     sqDiv.style.backgroundColor = darkenedColor;
                 }
